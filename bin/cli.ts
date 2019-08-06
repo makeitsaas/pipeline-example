@@ -1,4 +1,5 @@
 import * as program from 'commander';
+import { Pipeline } from '@make-it-saas/pipeline';
 
 program
     .version('0.1.0')
@@ -15,4 +16,7 @@ program
     .option('--drop', 'Associated with environment id, will drop deployment')
     .parse(process.argv);
 
-console.log('do something');
+
+const pipe = new Pipeline();
+
+pipe.run();
