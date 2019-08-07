@@ -33,7 +33,6 @@
     "node-ansible": "^0.5.5",
     "reflect-metadata": "^0.1.13",
     "simple-encryptor": "^3.0.0",
-    "typeorm": "^0.2.17",
     "typescript": "^3.5.1",
     "uuid": "^3.3.2",
     "workflow-es": "^2.3.5",

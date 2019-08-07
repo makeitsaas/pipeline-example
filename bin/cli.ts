@@ -1,22 +1,19 @@
-import * as program from 'commander';
-import { Pipeline } from '@make-it-saas/pipeline';
+import { Core, Pipeline, Databases, Connection } from '@make-it-saas/pipeline';
+import { SomeArraySeed } from '@make-it-saas/pipeline/dist/seeds';
+import { Comments } from '../src/inputs/test/entities/comments';
 
-program
-    .version('0.1.0')
-    .option('--mode [mode]', 'Environment type (prod, test, local)')
-    .option('--test', 'What your do for testing')
-    .option('--ansible', 'Prepare ansible playbook')
-    .option('--playbook [playbookName]', 'Specify ansible playbook name')
-    .option('-X, --execute', 'Combined with --ansible, executes the freshly created playbook')
-    .option('-i, --interactive', 'Creates a sequence from order')
-    .option('--order [orderId]', 'Creates a sequence from order')
-    .option('--sequence [sequenceId]', 'Runs a sequence')
-    .option('--environment [environmentId]', 'Environment Id')
-    .option('--service [serviceId]', 'Service Id')
-    .option('--drop', 'Associated with environment id, will drop deployment')
-    .parse(process.argv);
+Core.onReady().then(() => {
+    const pipe = new Pipeline();
 
+    console.log('seed', SomeArraySeed);
+    console.log('process.env.DB_TEST_HOSTNAME', process.env.DB_TEST_HOSTNAME);
 
-const pipe = new Pipeline();
+    const connection: Connection = Databases['test'];
+    console.log(Databases);
 
-pipe.run();
+    connection.getRepository(Comments).find().then(results => console.log(results.slice(0, 10)));
+
+    pipe.run();
+    console.log('done');
+});
+
