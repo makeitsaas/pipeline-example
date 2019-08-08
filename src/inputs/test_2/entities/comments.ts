@@ -8,9 +8,6 @@ export class Comments {
     id: string;
 
     @Column()
-    comment_text: string;
-
-    @Column()
-    identity_hate: number;
+    comment: string;
 
 }
