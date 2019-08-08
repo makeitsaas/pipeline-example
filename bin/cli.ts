@@ -1,13 +1,10 @@
 import { CoreContainer, Pipeline, Connection } from '@make-it-saas/pipeline';
 import { Comments } from '../src/inputs/test/entities/comments';
 import { Comments as Com2 } from '../src/inputs/test_2/entities/comments';
-import { mydecorator, inputDatabase, outputDatabase } from '@make-it-saas/pipeline/dist/decorators';
+import { inputDatabase, outputDatabase } from '@make-it-saas/pipeline/dist/decorators';
 import { DemoModel } from '@make-it-saas/pipeline/dist/datascience';
 
 class FrameworkSpecificClass {
-    @mydecorator
-    something: any;
-
     @inputDatabase('test')
     testDb: Connection;
 
